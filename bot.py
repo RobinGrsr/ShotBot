@@ -1,19 +1,13 @@
-import discord
+async def main():
+    global TOKEN
+    await client.login(ODIzOTczODcxNjM1MjY3NjE0.YFondw.LEW2Hcb8IjNoOQxnwN8Sg8i7KY4)
+    await client.connect()
 
-class MyClient(discord.Client):
-    async def on_ready(self):
-        print('Logged in as')
-        print(self.user.name)
-        print(self.user.id)
-        print('tz-W4JLsr0SPxzSFHF5Hk_gNKIGPiiQB')
-
-    async def on_message(self, message):
-        # we do not want the bot to reply to itself
-        if message.author.id == self.user.id:
-            return
-
-        if message.content.startswith('!hello'):
-            await message.channel.send('Hello {0.author.mention}'.format(message))
-
-client = MyClient()
-client.run('token')
+# Launch the bot
+loop = asyncio.get_event_loop()
+try:
+    loop.run_until_complete(main())
+except:
+    loop.run_until_complete(client.logout())
+finally:
+    loop.close()
